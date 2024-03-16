@@ -1,0 +1,426 @@
+COMMANDS:-
+npm init
+npm install -D parcel
+npm install react
+npm install reactDOM
+npx parcel index.html
+npx parcel build index.html
+
+->createRoot-display React components inside browser DOM
+
+->So basically there are three methods to load js script files
+Normal Execution-Html parsing will goes on and as soon as it encounters the script tag it will stop the parsing fetch the files from network and executes it and then HTML parsing will continue
+async-script files will get fetched parallely with the HTML parsing and after that it is fetched and during fetching HTML parsing will stop
+Defer-the main diff is that files are executed after the HTML parsing
+
+->React.createElement(tag,attributes,[children])
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Q why do we use npm?
+- because our react app is powered by lot of things,lot of packages suppose we have to minify it,bundle things up,we have to remove console.logs,optimise it for that we need lot of helper packages and those helper packages comes under npm.
+-npm init /npm init -y- when we do this it creates configuration which have dependencies
+
+Installing parcel into our app
+npm install -D parcel(D stands for Dev dependency)
+Dev dependency means all the packages that our project need
+
+Package-lock.json- it is very important file,it locks the version,we dont have to keep it in gitignore
+-it maintains the exact version
+-it maintains the hash as well , it ensures that what exactly the version was running in my system and is same on the production
+
+Node-modules-it is kind of database of the npm.This folder contains all the libraries that we install by npm command.
+
+npx means execute using npm
+npx parcel index.html(entry point)-it creates Dev build 
+
+HMR-Hot Module Replacement-parcel will keep a track of all the files we are updating.It helps to update at run time without the need of full refresh.
+File Watcher Algorithm-parcel is doing(written in c++)
+Bundling
+minify
+Cleaning the code
+Dev and production build
+Super fast build algorithm
+Image optimising
+Caching while development
+Compression
+Compatible with older version of the browser
+HTTPS on dev
+Port Number
+Consistent hashing Algorithm-to cache things up
+Zero Config
+Tree Shaking-remove unwanted
+
+WE SHOULD PUT .parcel.cache IN gitignore
+Anything which we can generate on server will be put inside gitignore
+
+Transitive Dependencies-For eg:- parcel is dependent on some modules and those modules are dependent on some other modules so this is known as transitive Dependencies.
+
+Browserlist-for compatibility in all the older versions of the browser
+
+dist-it means development build so when we run command npx parcel index.html so it minifies the code and make production ready files in the dist folder
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                              LAYING THE FOUNDATION
+Polyfill-Lets say promises dont work for older browsers so they need to be converted into another peice of code and this is known as polyfill.
+Babel is a javascript node package which converts the newer code to the older code version     
+
+render-updating something in the DOM
+
+npx=npm run
+
+npm run start
+
+React.createElement=> Object => Html=>DOM
+
+React came bacause we wanted to change the HTML using javascript in an efficient manner
+
+JSX is the HTML like syntax it is a fancy way of writing HTML in JS
+
+Functional components-these are the functions which return some react another component or JSX 
+for returning we will do root.render(<Heading/>)
+EXAMPLE-const HeadingComponent=()=>{
+    return <h1>React</h1>
+}
+
+JSX -> big Object ->
+
+XSS-Crosssite scripting
+JSX is doing sanitation
+
+Component-function that returns html content.
+start with capital letter.
+A single file that return html with name starting with capital letter.
+In vite the extension must be .jsx
+
+Component Composition-When we use component inside component then it is known as component composition
+
+React concilation-It consists of two things:-
+1-Virtual DOM-React renders JSX components to the DOM and keeps the copy of the actual DOM to itself.Changes to the tags 
+2-Diffing Algorithm-it is based on elements of different types will make different trees.
+-element would be of same type-it will check which nodes are changed and then depending on that it will re-render only that changes. 
+-element may be of different type-if it is of differnt type then it will re-render the full DOM.
+
+Q Why React is Fast?
+Ans- React uses the virtual DOM which is the representaion of the actual DOM. React uses the reconciliation algorithm to dif the trees. It finds out the difference between the two trees.It will only re-render the specific portion of the app which is found by diff algorithm.
+
+Q Why do we use keys?
+Ans- So lets say we have 4 divs and we introduced one more div.So React will get confused and will re-renders all the divs.So to not re-render everything we use the keys which is unique which helps in identifying which divs have changed.
+
+Q What is trees?
+Ans- Basically it is the virtual representation of the DOM.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+              //Talk is Cheap Show me the code
+JSX allows only one parent so if we make it in div then we have one more div inside the root which we donot want.So React give the access to React.Fragment which is a react component like an empty tag it acts as a root to the elements and from this we dont get that extra div also.
+
+configuration-it is JSON data.(javascript Object)
+
+Config Driven UI- It is a powerful tool to build WebApps. So basically config is something which is sent from backend or it can be hardcoded in front-end. It is a big JSON object. So we can have separate config for different components in the App. It is easily to modify or customize without having much changes in the codebase. This makes it easy to maintain and scale the UI. 
+
+Props-properties-whenever we say pass props it means we are passing data to the component
+
+Q Why we prefer map instead of foreach loop?
+Ans- Because map returns a new array and to which i can do optional chaining while in case of foreach it returns undefined so we cant do optional chaining.
+
+Virtual DOM-representaion of the actual DOM.We need Virtual DOM for the reconciliation
+
+React.Fragment-it allows to wrap up multiple elements together.it has no effect on the DOM it is same as there if the elements were not grouped.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            LETS GET HOOKED
+
+{}-named import -when we export like export const heading=
+import Title from ___-when we export by default
+
+Data Binding:- whenever we want to change the user 
+
+React uses one-way data binding
+
+Hooks-these are the javascript functions which are written by facebook developers which gave us functionality.There are different types of hooks which have different functionality.
+useState()-to create local state variable.We need to sync UI with the data for that we use useState.
+
+Why do we not use variables like normal variables?
+Ans- Beacuse React doesnt keep track of this.It says that it will only track the variables which are local state variables.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                           //EXPLORING THE WORLD
+
+React is fast because of its fast DOM manipulation and it is of Diff Algo and React fibre.       
+
+Microservices-Every component or service is separate project so we donot have to deploy the whole project again and again.separate project can be deployed independently. 
+
+CORS-Cross-origin Resource sharing - It allows for transfer of data in different domain.
+Firstly preflight request is made and after that it recieves some additional headers(options) and then the actual API call is made.
+The main header are Accept Control Allow Origin 
+
+empty dependency array-once after initial render
+[searchText]=once after initial render+everytime the state of searchText changes.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                             //FINDING THE PATH
+useEffect-It is a hook which react provides.It is called after the component is rendered.It takes two parameters one is the callback function and the second one is the dependency array.
+If the dependency array is empty then it is rendered once only.If it has state variable then it is rendered again nd again whenver state variable changes.
+
+useState-it is a hok which react gives to create local state variable inside your functional component
+
+NEVER CREATE COMPONENT INSIDE COMPONENT
+NEVER WRITE usestate() inside if and for condition-it leads to inconsistency
+NEVER USE useState() outside functional component
+
+Q Why CDN is a great place to host images?
+Ans-Optimises the image-by finding the best quality 
+   -High positions in search results,faster load images
+   -Security-Encryption
+   -Availability
+   -High conversion rate
+   -Lightweight images
+
+Formik-package for forms
+
+
+ROUTER------------------------
+createBrowserRouter - this configuration will decide what will happen if I load certain path
+
+SPA-Single Page Application- it operates by dynamically modifying the web page with new data rather than relaoding the whole web page
+
+There are two types of routing:-
+1-Client Side routing
+2-Server Side routing-all our pages comes from server
+
+Outlet will be filled by my children configuration.
+All the children will go in Outlet according to the route.
+
+useParams()-helps to get the id(helps to read dynamic URL)
+
+Benefits of breaking into components-
+1-reusable
+2-maintainable
+3-testable
+4-modular
+5-readable
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                             LET'S GET CLASSY
+Constructor-it is the place that is used for initialisation.Whenever classes are invoked Constructor is called and this is the best place for the useState 
+
+render()-It is compulsory to make class-based component. it means it returns some piece of JSX
+
+we donot mutate the state directly.
+Never do this.state=Something 
+
+Lifecycle of class components-
+Firstly constructor is called then render method and after that componentDidMount
+we do the API call inside the componentDidMount because it is called after render
+we initialise the state in the constructor because it is called first
+
+Lifecycle method-
+There are two phases-
+1-Render phase
+2-Commit phase
+
+Parent constructor called
+Parent render called
+child constructor called
+child render called
+API call
+//DOM update
+first it will complete its render cycle
+child componentDidMount
+parent componentDidMount
+//UPDATE cycle
+componentdidUpdate
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                                  OPTIMISING OUR App
+Q Why Hooks are used?
+Ans-It makes the code reusable,modular(breaking into meaningfull chunks),readable.
+
+Code Splitting/Chunking/Dynamic Bundling/Lazy Loading/On Demand Loading/Dynamic import-
+it means we shouldnt bundle everything in a same file as it will make the size of the js file very huge which will make the app slow.So we divide the bundles in different chunks.
+
+React tries to render even before the content is loaded during lazy loading so it shows error.
+lazy is used which is imported from react to do Chunking.
+const handler=lazy(()=>import(/path)).
+lazy is the promise.
+To handle this error we use Suspense which resolves this error.
+so while displaying the lazy component we will pack it insider the Suspense and it will resolve the error.
+Suspense also takes fallback={} for meanwhile we can show the shimmer.
+
+Q Why we should not lazy load the component inside the component?
+Ans-Beacuse it will be lazy loaded after every render cycle.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                           JO DIKHTA HAI VO BIKTA HAI
+Normal Native CSS 
+SCSS
+inline CSS
+Component Libraries-Material UI,Base UI,Ant,Chakra
+Styled component
+Tailwind CSS Framework-
+  -CSS on th go(in the same file)
+  -reusuability
+  -less bundle size
+  -Flexible UI(customizable)   
+
+  Cons-
+  -learning curve 
+
+  ctrl+spacebar-not showing suggestions    
+
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                                DATA IS THE NEW OIL
+Q Diff between State and props?
+Ans-Props-passing data from one element to another.
+    State-
+
+Props Drilling-when we pass props from one component to another and this heirarachy goes on.   
+
+Lifting the state up-when we take control of state from children and give it to parent and parent controls what to render in children.
+
+React Context-it is like central place where we can store the data which is used everywhere.It is accessible anywhere in the app.
+We can also use local storage but it is a very heavy operation.
+
+UserContext.Provider-over-riding the default value passed.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    BUILDING UP THE STORE 
+useDispatch()-dispatches an action.
+Redux Store-it is separate from web app.It is a global place we can access it from anywhere in the app.
+
+Slice-It is the small portion of your store.Store is broken down into slices.
+
+When we click on +button it will dispatch an action which will call a JS function(reducer) which will update the slice of the store.We cannot directly modify the slice.
+
+Selector-If we want to read cart then we have to call Selector and the selector will give the info that will update the cart.Selector is the Hook.
+
+Subscribing the store-When we read something form cart it means we have subsribed from the store.Which means whenver my store will modify our cart will automatically modify.
+
+Job of redux-to maintain the store,slices.(core library)
+React-redux-it is a bridge between redux and react.
+
+ConfigureStore-to create store by redux-toolkit.
+Provider-bridge by react-redux.
+
+Process-
+Create Store
+   -configureStore -by redux-toolkit
+
+Provide Store to App
+ <Provider store={store} -import from react-redux
+
+Create Slice 
+ -createSlice -import form redux toolkit
+
+ name:
+ InitialState:
+ reducers: 
+
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        TIME FOR THE TEST 
+Q Why do we need testcases?
+Ans-to ensure that if we write new code then it will not affect other code.
+
+Test Driven development-it means we write testcases even before writing the code.
+
+Different types of Testing-
+   -Manual Testing
+   -Automation Testing
+      -Selenium
+   -E2E testing-covers entire user journey usually this work is done by QA team.
+
+   -Unit Testing-small feature testing done by developers.
+
+   Integration testing-testing between how components integration.
+
+Headless Browser-it is the same as browser but it doesnt have GUI.It is fast because browser dont have to do the job of painting the browser.
+
+Jest-javascript testing Framework.React testing library uses jest behind the scenes.
+
+Steps-
+installed react testing library.
+install jest.
+configure jest.(npx jest --init)
+
+npx jest --init(for direct creation).we use npx coz we want to execute it once.
+
+(REMEMBER TO CHECK FOR "test":"jest" in package.json)
+npm run test-it will give error.
+
+npm i -D jest-environment-jsdom
+Create first test
+Configure babel
+
+Q-Diff between JSON and javascript Object?
+Ans-javascript object is the data type.
+JSON is the method of organising data.Babel understands JSON format.
+
+NOTE-babel.rc takes JSON 
+wrote expect test cases 
+gitignore /coverage
+
+Install @babel/preset-react beacause our code was not understanding JSX.(npm i -D @babel/preset-react)
+ModuleNameMapper-"\\.(format)"
+
+Staticrouter by react-router-dom/server.(for error router wali coz createBrowserRouter dont work on jsdom)
+
+data-testid=""-for providing the id to element.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                       MACHINE CODING INTERVIEW
+Todo list
+forms
+Fetch data from API
+Quiz app
+Nested filter
+Courausels
+Hooks
+API call
+SEARCHING 
+SORTING
+INFINTE SCROLL
+HIGHER ORDER COMPONENTS
+COUNTER App
+DEBOUNCING
+Tic Tactoe
+
+-Requirement clarification
+   -Features to develop
+   -Tech Stack
+     -Redux(Answer Why we chose this?)-for managing data
+     -Tailwind
+     -react-router dom for routing
+     -Bundler and why?
+     -testing library(jest)
+Note-5mins for discussion.
+
+Discuss the UI design in next 5 mins.
+
+npx create-react-app
+
+rafce
+
+URLsearchparams
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            BUILDING YOUTUBE ADVANCED
+Higher Order Component-It is a function which takes up the component and return the component.
+
+Debouncing-
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            END GAME
+Data Live(Application which involves near real time data)
+1-Web sockets-it is bidirectional kind of a handshake from which we can send the data quickly.It can be between UI and server or UI to backend.There is no regular interval.Eg Trading apps,Chatting apps
+
+2-Long Polling/API Polling-It is one directional.UI requests the server and server provides the data.
+It has intervals.Eg Gmail
+
+
+
+
+
+
